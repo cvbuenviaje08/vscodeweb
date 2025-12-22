@@ -3,16 +3,24 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  reporter: 'html',
   timeout: 60000,
-  retries: 1, // Retry failed tests once
+  retries: 1,
+
+  reporter: [
+    ['html'],
+    ['allure-playwright'],
+  ],
+
   use: {
     trace: 'on',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
+
   projects: [
-    // Chrome on Windows
+    // -------------------------------
+    // Chrome (Tablet) - Windows 11
+    // -------------------------------
     {
       name: 'bs-chrome-windows-tablet',
       use: {
@@ -33,7 +41,10 @@ export default defineConfig({
         },
       },
     },
-    // Edge on Windows
+
+    // -------------------------------
+    // Edge (Tablet) - Windows 11
+    // -------------------------------
     {
       name: 'bs-edge-windows-tablet',
       use: {
@@ -54,7 +65,10 @@ export default defineConfig({
         },
       },
     },
-    // Firefox on Windows
+
+    // -------------------------------
+    // Firefox (Tablet) - Windows 11
+    // -------------------------------
     {
       name: 'bs-firefox-windows-tablet',
       use: {
