@@ -16,6 +16,7 @@ describe('Mobile Web Test - BrowserStack', function () {
 
         let status = 'passed';
         let title = 'N/A';
+        
         let screenshotName = 'N/A';
 
         try {
