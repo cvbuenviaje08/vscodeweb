@@ -1,0 +1,877 @@
+2025-12-27T06:47:08.818Z CLI info     Config : {"userName":"[REDACTED]","accessKey":"[REDACTED]","platforms":[{"browserName":"Chrome","deviceName":"Samsung Galaxy S24","osVersion":"14","realMobile":true,"sessionName":"Galaxy S24 Test","buildName":"codespaces-browserstack-mobile","wdioService":"9.21.0"},{"browserName":"Safari","deviceName":"iPhone 15","osVersion":"17","realMobile":true,"sessionName":"iPhone 15 Test","buildName":"codespaces-browserstack-mobile","wdioService":"9.21.0"}],"isNonBstackA11yWDIO":false,"accessibility":null,"testObservability":true,"testContextOptions":{"skipSessionName":false,"skipSessionStatus":false,"sessionNameOmitTestTitle":false,"sessionNamePrependTopLevelSuiteTitle":false,"sessionNameFormat":""},"buildTag":[]}
+2025-12-27T06:47:08.856Z CLI info     Should start debug utility: undefined
+2025-12-27T06:47:08.862Z CLI info [testhub:module]  [christianbuenvia_N9hiQw]   [5040ab38-8245-4eb4-b54a-905316782709]  Starting testhub from 28707:0
+2025-12-27T06:47:08.864Z CLI info  [christianbuenvia_N9hiQw]   [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making POST request to https://sdk.browserstack.com
+2025-12-27T06:47:09.678Z CLI info [testhub:module]  [christianbuenvia_N9hiQw]   [5040ab38-8245-4eb4-b54a-905316782709]  startBuild: response=cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm
+2025-12-27T06:47:09.680Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2025-12-27T06:47:12.594Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making GET request to https://hub.browserstack.com
+2025-12-27T06:47:12.993Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making GET request to https://hub-apse.browserstack.com
+2025-12-27T06:47:13.387Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making GET request to https://hub-aps.browserstack.com
+2025-12-27T06:47:13.424Z CLI info [sdk:service]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Driver initialized as primary driver: platformIndex=0
+2025-12-27T06:47:13.431Z CLI info [sdk:service]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Driver initialized as primary driver: platformIndex=1
+2025-12-27T06:47:13.713Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making GET request to https://hub-usw.browserstack.com
+2025-12-27T06:47:33.199Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Added the event {
+  event_type: 'CBTSessionCreated',
+  test_run: {
+    uuid: 'b219717c-2498-4c41-9a1f-740588d1f859',
+    integrations: { browserstack: [Object] }
+  }
+} to 28707:0
+2025-12-27T06:47:33.205Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Added the event {
+  event_type: 'TestRunStarted',
+  test_run: {
+    type: 'test',
+    framework: 'WebdriverIO-mocha',
+    uuid: 'b219717c-2498-4c41-9a1f-740588d1f859',
+    name: 'should open BDO Online Banking and validate full page readiness',
+    body: {
+      lang: 'ecmascript',
+      code: 'async function () {\n' +
+        '        const caps = browser.capabilities;\n' +
+        "        const device = caps.deviceName || caps.browserName || 'unknown-device';\n" +
+        "        const os = caps.os || caps.platformName || 'unknown-os';\n" +
+        "        const browserName = caps.browserName || 'unknown-browser';\n" +
+        '        const isMobile = /ios|android/i.test(os) || /safari/i.test(browserName) || /chrome/i.test(browserName);\n' +
+        '\n' +
+        "        let status = 'passed';\n" +
+        "        let title = 'N/A';\n" +
+        "        let screenshotName = 'N/A';\n" +
+        "        let softFailNote = '';\n" +
+        '\n' +
+        '        try {\n' +
+        "            await browser.url('https://www.onlinebanking.bdo.com.ph/');\n" +
+        '\n' +
+        '            // 1️⃣ DOM + URL ready (soft-fail for mobile)\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        const readyState = await browser.execute(() => document.readyState);\n' +
+        '                        const currentUrl = await browser.getUrl();\n' +
+        "                        return readyState === 'complete' && currentUrl.includes('bdo.com.ph');\n" +
+        '                    },\n' +
+        '                    { timeout: isMobile ? 90000 : 45000 }\n' +
+        '                );\n' +
+        '            } catch (domErr) {\n' +
+        '                if (isMobile) {\n' +
+        "                    softFailNote += '⚠ Mobile DOM may not be fully rendered; continuing as soft-fail<br/>';\n" +
+        '                } else {\n' +
+        '                    throw domErr;\n' +
+        '                }\n' +
+        '            }\n' +
+        '\n' +
+        '            // 2️⃣ Detect BLOCKED / SECURITY pages\n' +
+        '            const pageContent = await browser.execute(() => document.body.innerText.toLowerCase());\n' +
+        '            if (\n' +
+        "                pageContent.includes('access denied') ||\n" +
+        "                pageContent.includes('security check') ||\n" +
+        "                pageContent.includes('unusual activity') ||\n" +
+        "                pageContent.includes('verify you are human')\n" +
+        '            ) {\n' +
+        "                throw new Error('Blocked / security page detected');\n" +
+        '            }\n' +
+        '\n' +
+        '            // 3️⃣ Detect MAINTENANCE page\n' +
+        '            if (\n' +
+        "                pageContent.includes('maintenance') ||\n" +
+        "                pageContent.includes('temporarily unavailable') ||\n" +
+        "                pageContent.includes('we’ll be back soon')\n" +
+        '            ) {\n' +
+        "                throw new Error('Maintenance page detected');\n" +
+        '            }\n' +
+        '\n' +
+        '            // 4️⃣ Network idle approximation\n' +
+        '            await browser.execute(() => {\n' +
+        '                window.__lastNetworkActivity = Date.now();\n' +
+        '                const origFetch = window.fetch;\n' +
+        '                window.fetch = function () {\n' +
+        '                    window.__lastNetworkActivity = Date.now();\n' +
+        '                    return origFetch.apply(this, arguments);\n' +
+        '                };\n' +
+        '                const origXhrOpen = XMLHttpRequest.prototype.open;\n' +
+        '                XMLHttpRequest.prototype.open = function () {\n' +
+        "                    this.addEventListener('loadend', () => {\n" +
+        '                        window.__lastNetworkActivity = Date.now();\n' +
+        '                    });\n' +
+        '                    origXhrOpen.apply(this, arguments);\n' +
+        '                };\n' +
+        '            });\n' +
+        '\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        const last = await browser.execute(() => window.__lastNetworkActivity);\n' +
+        '                        return Date.now() - last > 3000; // 3s network idle\n' +
+        '                    },\n' +
+        '                    { timeout: 45000 }\n' +
+        '                );\n' +
+        '            } catch (netErr) {\n' +
+        "                softFailNote += '⚠ Network idle not reached; continuing as soft-fail<br/>';\n" +
+        '            }\n' +
+        '\n' +
+        '            // 5️⃣ Spinner wait (SOFT-FAIL for all mobile)\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        return await browser.execute(() => {\n' +
+        '                            const spinners = document.querySelectorAll(\n' +
+        `                                '[class*="spinner"], [class*="loading"], [aria-busy="true"]'\n` +
+        '                            );\n' +
+        '                            return Array.from(spinners).every(el => {\n' +
+        '                                const style = window.getComputedStyle(el);\n' +
+        "                                return style.display === 'none' || style.visibility === 'hidden';\n" +
+        '                            });\n' +
+        '                        });\n' +
+        '                    },\n' +
+        '                    { timeout: 90000 } // extend to 90s for slow devices\n' +
+        '                );\n' +
+        '            } catch (spinnerErr) {\n' +
+        "                softFailNote += '⚠ Spinner still visible (soft-fail)<br/>';\n" +
+        '            }\n' +
+        '\n' +
+        '            // 6️⃣ Capture title\n' +
+        '            title = await browser.getTitle();\n' +
+        '\n' +
+        '            // 7️⃣ Screenshot\n' +
+        "            screenshotName = `${Date.now()}-${device.replace(/\\s/g, '_')}-BDO.png`;\n" +
+        '            const screenshotPath = path.join(screenshotDir, screenshotName);\n' +
+        '            await browser.saveScreenshot(screenshotPath);\n' +
+        '\n' +
+        '        } catch (err) {\n' +
+        "            status = 'failed';\n" +
+        '            throw err;\n' +
+        '        } finally {\n' +
+        '            // Prepare HTML report row\n' +
+        '            if (!fs.existsSync(reportDir)) fs.mkdirSync(reportDir, { recursive: true });\n' +
+        '            if (!fs.existsSync(screenshotDir)) fs.mkdirSync(screenshotDir, { recursive: true });\n' +
+        '\n' +
+        '            const finalStatus =\n' +
+        "                status === 'passed' && softFailNote ? 'warning' : status;\n" +
+        '\n' +
+        '            const rowHtml = `<tr>\n' +
+        '<td>${device}</td>\n' +
+        '<td>${os}</td>\n' +
+        '<td>${browserName}</td>\n' +
+        "<td>${title}${softFailNote ? `<br/><small>${softFailNote}</small>` : ''}</td>\n" +
+        '<td class="${finalStatus}">${finalStatus.toUpperCase()}</td>\n' +
+        '<td>${\n' +
+        "                screenshotName !== 'N/A'\n" +
+        '                    ? `<a href="../screenshot/${screenshotName}" target="_blank">View</a>`\n' +
+        "                    : 'N/A'\n" +
+        '            }</td>\n' +
+        '</tr>`;\n' +
+        '\n' +
+        '            fs.appendFileSync(reportFile, rowHtml);\n' +
+        '        }\n' +
+        '    }'
+    },
+    identifier: 'should open BDO Online Banking and validate full page readiness',
+    scope: 'BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness',
+    scopes: [ 'BDO Online Banking - Page Load Test' ],
+    file_name: 'tests/bdo_test.js',
+    vc_filepath: 'tests/bdo_test.js',
+    location: 'tests/bdo_test.js',
+    result: 'pending',
+    duration_in_ms: null,
+    started_at: '2025-12-27T06:47:33.110Z',
+    failure: undefined,
+    failure_type: undefined,
+    failure_reason: undefined,
+    retry_of: null,
+    custom_metadata: undefined,
+    tags: [],
+    customRerunParam: { rerun_name: undefined },
+    hooks: [],
+    product_map: {
+      observability: true,
+      accessibility: false,
+      percy: false,
+      automate: true,
+      app_automate: false
+    }
+  },
+  logs: []
+} to 28707:0
+2025-12-27T06:47:33.699Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Processing batch event [
+  {
+    event_type: 'CBTSessionCreated',
+    test_run: {
+      uuid: 'b219717c-2498-4c41-9a1f-740588d1f859',
+      integrations: [Object]
+    }
+  },
+  {
+    event_type: 'TestRunStarted',
+    test_run: {
+      type: 'test',
+      framework: 'WebdriverIO-mocha',
+      uuid: 'b219717c-2498-4c41-9a1f-740588d1f859',
+      name: 'should open BDO Online Banking and validate full page readiness',
+      body: [Object],
+      identifier: 'should open BDO Online Banking and validate full page readiness',
+      scope: 'BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness',
+      scopes: [Array],
+      file_name: 'tests/bdo_test.js',
+      vc_filepath: 'tests/bdo_test.js',
+      location: 'tests/bdo_test.js',
+      result: 'pending',
+      duration_in_ms: null,
+      started_at: '2025-12-27T06:47:33.110Z',
+      failure: undefined,
+      failure_type: undefined,
+      failure_reason: undefined,
+      retry_of: null,
+      custom_metadata: undefined,
+      tags: [],
+      customRerunParam: [Object],
+      hooks: [],
+      product_map: [Object]
+    },
+    logs: []
+  }
+] to 28707:0
+2025-12-27T06:47:33.703Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making POST request to https://collector-observability.browserstack.com
+2025-12-27T06:47:34.257Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Added the event {
+  event_type: 'CBTSessionCreated',
+  test_run: {
+    uuid: '9d33f0e2-de82-4881-bb18-779d1c165c56',
+    integrations: { browserstack: [Object] }
+  }
+} to 28707:0
+2025-12-27T06:47:34.263Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Added the event {
+  event_type: 'TestRunStarted',
+  test_run: {
+    type: 'test',
+    framework: 'WebdriverIO-mocha',
+    uuid: '9d33f0e2-de82-4881-bb18-779d1c165c56',
+    name: 'should open BDO Online Banking and validate full page readiness',
+    body: {
+      lang: 'ecmascript',
+      code: 'async function () {\n' +
+        '        const caps = browser.capabilities;\n' +
+        "        const device = caps.deviceName || caps.browserName || 'unknown-device';\n" +
+        "        const os = caps.os || caps.platformName || 'unknown-os';\n" +
+        "        const browserName = caps.browserName || 'unknown-browser';\n" +
+        '        const isMobile = /ios|android/i.test(os) || /safari/i.test(browserName) || /chrome/i.test(browserName);\n' +
+        '\n' +
+        "        let status = 'passed';\n" +
+        "        let title = 'N/A';\n" +
+        "        let screenshotName = 'N/A';\n" +
+        "        let softFailNote = '';\n" +
+        '\n' +
+        '        try {\n' +
+        "            await browser.url('https://www.onlinebanking.bdo.com.ph/');\n" +
+        '\n' +
+        '            // 1️⃣ DOM + URL ready (soft-fail for mobile)\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        const readyState = await browser.execute(() => document.readyState);\n' +
+        '                        const currentUrl = await browser.getUrl();\n' +
+        "                        return readyState === 'complete' && currentUrl.includes('bdo.com.ph');\n" +
+        '                    },\n' +
+        '                    { timeout: isMobile ? 90000 : 45000 }\n' +
+        '                );\n' +
+        '            } catch (domErr) {\n' +
+        '                if (isMobile) {\n' +
+        "                    softFailNote += '⚠ Mobile DOM may not be fully rendered; continuing as soft-fail<br/>';\n" +
+        '                } else {\n' +
+        '                    throw domErr;\n' +
+        '                }\n' +
+        '            }\n' +
+        '\n' +
+        '            // 2️⃣ Detect BLOCKED / SECURITY pages\n' +
+        '            const pageContent = await browser.execute(() => document.body.innerText.toLowerCase());\n' +
+        '            if (\n' +
+        "                pageContent.includes('access denied') ||\n" +
+        "                pageContent.includes('security check') ||\n" +
+        "                pageContent.includes('unusual activity') ||\n" +
+        "                pageContent.includes('verify you are human')\n" +
+        '            ) {\n' +
+        "                throw new Error('Blocked / security page detected');\n" +
+        '            }\n' +
+        '\n' +
+        '            // 3️⃣ Detect MAINTENANCE page\n' +
+        '            if (\n' +
+        "                pageContent.includes('maintenance') ||\n" +
+        "                pageContent.includes('temporarily unavailable') ||\n" +
+        "                pageContent.includes('we’ll be back soon')\n" +
+        '            ) {\n' +
+        "                throw new Error('Maintenance page detected');\n" +
+        '            }\n' +
+        '\n' +
+        '            // 4️⃣ Network idle approximation\n' +
+        '            await browser.execute(() => {\n' +
+        '                window.__lastNetworkActivity = Date.now();\n' +
+        '                const origFetch = window.fetch;\n' +
+        '                window.fetch = function () {\n' +
+        '                    window.__lastNetworkActivity = Date.now();\n' +
+        '                    return origFetch.apply(this, arguments);\n' +
+        '                };\n' +
+        '                const origXhrOpen = XMLHttpRequest.prototype.open;\n' +
+        '                XMLHttpRequest.prototype.open = function () {\n' +
+        "                    this.addEventListener('loadend', () => {\n" +
+        '                        window.__lastNetworkActivity = Date.now();\n' +
+        '                    });\n' +
+        '                    origXhrOpen.apply(this, arguments);\n' +
+        '                };\n' +
+        '            });\n' +
+        '\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        const last = await browser.execute(() => window.__lastNetworkActivity);\n' +
+        '                        return Date.now() - last > 3000; // 3s network idle\n' +
+        '                    },\n' +
+        '                    { timeout: 45000 }\n' +
+        '                );\n' +
+        '            } catch (netErr) {\n' +
+        "                softFailNote += '⚠ Network idle not reached; continuing as soft-fail<br/>';\n" +
+        '            }\n' +
+        '\n' +
+        '            // 5️⃣ Spinner wait (SOFT-FAIL for all mobile)\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        return await browser.execute(() => {\n' +
+        '                            const spinners = document.querySelectorAll(\n' +
+        `                                '[class*="spinner"], [class*="loading"], [aria-busy="true"]'\n` +
+        '                            );\n' +
+        '                            return Array.from(spinners).every(el => {\n' +
+        '                                const style = window.getComputedStyle(el);\n' +
+        "                                return style.display === 'none' || style.visibility === 'hidden';\n" +
+        '                            });\n' +
+        '                        });\n' +
+        '                    },\n' +
+        '                    { timeout: 90000 } // extend to 90s for slow devices\n' +
+        '                );\n' +
+        '            } catch (spinnerErr) {\n' +
+        "                softFailNote += '⚠ Spinner still visible (soft-fail)<br/>';\n" +
+        '            }\n' +
+        '\n' +
+        '            // 6️⃣ Capture title\n' +
+        '            title = await browser.getTitle();\n' +
+        '\n' +
+        '            // 7️⃣ Screenshot\n' +
+        "            screenshotName = `${Date.now()}-${device.replace(/\\s/g, '_')}-BDO.png`;\n" +
+        '            const screenshotPath = path.join(screenshotDir, screenshotName);\n' +
+        '            await browser.saveScreenshot(screenshotPath);\n' +
+        '\n' +
+        '        } catch (err) {\n' +
+        "            status = 'failed';\n" +
+        '            throw err;\n' +
+        '        } finally {\n' +
+        '            // Prepare HTML report row\n' +
+        '            if (!fs.existsSync(reportDir)) fs.mkdirSync(reportDir, { recursive: true });\n' +
+        '            if (!fs.existsSync(screenshotDir)) fs.mkdirSync(screenshotDir, { recursive: true });\n' +
+        '\n' +
+        '            const finalStatus =\n' +
+        "                status === 'passed' && softFailNote ? 'warning' : status;\n" +
+        '\n' +
+        '            const rowHtml = `<tr>\n' +
+        '<td>${device}</td>\n' +
+        '<td>${os}</td>\n' +
+        '<td>${browserName}</td>\n' +
+        "<td>${title}${softFailNote ? `<br/><small>${softFailNote}</small>` : ''}</td>\n" +
+        '<td class="${finalStatus}">${finalStatus.toUpperCase()}</td>\n' +
+        '<td>${\n' +
+        "                screenshotName !== 'N/A'\n" +
+        '                    ? `<a href="../screenshot/${screenshotName}" target="_blank">View</a>`\n' +
+        "                    : 'N/A'\n" +
+        '            }</td>\n' +
+        '</tr>`;\n' +
+        '\n' +
+        '            fs.appendFileSync(reportFile, rowHtml);\n' +
+        '        }\n' +
+        '    }'
+    },
+    identifier: 'should open BDO Online Banking and validate full page readiness',
+    scope: 'BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness',
+    scopes: [ 'BDO Online Banking - Page Load Test' ],
+    file_name: 'tests/bdo_test.js',
+    vc_filepath: 'tests/bdo_test.js',
+    location: 'tests/bdo_test.js',
+    result: 'pending',
+    duration_in_ms: null,
+    started_at: '2025-12-27T06:47:34.214Z',
+    failure: undefined,
+    failure_type: undefined,
+    failure_reason: undefined,
+    retry_of: null,
+    custom_metadata: undefined,
+    tags: [],
+    customRerunParam: { rerun_name: undefined },
+    hooks: [],
+    product_map: {
+      observability: true,
+      accessibility: false,
+      percy: false,
+      automate: true,
+      app_automate: false
+    }
+  },
+  logs: []
+} to 28707:0
+2025-12-27T06:47:35.701Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Processing batch event [
+  {
+    event_type: 'CBTSessionCreated',
+    test_run: {
+      uuid: '9d33f0e2-de82-4881-bb18-779d1c165c56',
+      integrations: [Object]
+    }
+  },
+  {
+    event_type: 'TestRunStarted',
+    test_run: {
+      type: 'test',
+      framework: 'WebdriverIO-mocha',
+      uuid: '9d33f0e2-de82-4881-bb18-779d1c165c56',
+      name: 'should open BDO Online Banking and validate full page readiness',
+      body: [Object],
+      identifier: 'should open BDO Online Banking and validate full page readiness',
+      scope: 'BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness',
+      scopes: [Array],
+      file_name: 'tests/bdo_test.js',
+      vc_filepath: 'tests/bdo_test.js',
+      location: 'tests/bdo_test.js',
+      result: 'pending',
+      duration_in_ms: null,
+      started_at: '2025-12-27T06:47:34.214Z',
+      failure: undefined,
+      failure_type: undefined,
+      failure_reason: undefined,
+      retry_of: null,
+      custom_metadata: undefined,
+      tags: [],
+      customRerunParam: [Object],
+      hooks: [],
+      product_map: [Object]
+    },
+    logs: []
+  }
+] to 28707:0
+2025-12-27T06:47:35.706Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making POST request to https://collector-observability.browserstack.com
+2025-12-27T06:47:44.950Z CLI warn [TEST REPORTING AND ANALYTICS:webdriverio:mocha]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  TestRunFinished: event={"test_framework_name":"WebdriverIO-mocha","test_framework_version":"9.21.0","test_logs":[],"test_hooks_finished":{},"test_hooks_started":{},"test_uuid":"b219717c-2498-4c41-9a1f-740588d1f859","test_result":"passed","test_hook_last_started":"TestFrameworkState.TEST","test_id":"BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness","test_name":"should open BDO Online Banking and validate full page readiness","test_code":"async function () {\n        const caps = browser.capabilities;\n        const device = caps.deviceName || caps.browserName || 'unknown-device';\n        const os = caps.os || caps.platformName || 'unknown-os';\n        const browserName = caps.browserName || 'unknown-browser';\n        const isMobile = /ios|android/i.test(os) || /safari/i.test(browserName) || /chrome/i.test(browserName);\n\n        let status = 'passed';\n        let title = 'N/A';\n        let screenshotName = 'N/A';\n        let softFailNote = '';\n\n        try {\n            await browser.url('https://www.onlinebanking.bdo.com.ph/');\n\n            // 1️⃣ DOM + URL ready (soft-fail for mobile)\n            try {\n                await browser.waitUntil(\n                    async () => {\n                        const readyState = await browser.execute(() => document.readyState);\n                        const currentUrl = await browser.getUrl();\n                        return readyState === 'complete' && currentUrl.includes('bdo.com.ph');\n                    },\n                    { timeout: isMobile ? 90000 : 45000 }\n                );\n            } catch (domErr) {\n                if (isMobile) {\n                    softFailNote += '⚠ Mobile DOM may not be fully rendered; continuing as soft-fail<br/>';\n                } else {\n                    throw domErr;\n                }\n            }\n\n            // 2️⃣ Detect BLOCKED / SECURITY pages\n            const pageContent = await browser.execute(() => document.body.innerText.toLowerCase());\n            if (\n                pageContent.includes('access denied') ||\n                pageContent.includes('security check') ||\n                pageContent.includes('unusual activity') ||\n                pageContent.includes('verify you are human')\n            ) {\n                throw new Error('Blocked / security page detected');\n            }\n\n            // 3️⃣ Detect MAINTENANCE page\n            if (\n                pageContent.includes('maintenance') ||\n                pageContent.includes('temporarily unavailable') ||\n                pageContent.includes('we’ll be back soon')\n            ) {\n                throw new Error('Maintenance page detected');\n            }\n\n            // 4️⃣ Network idle approximation\n            await browser.execute(() => {\n                window.__lastNetworkActivity = Date.now();\n                const origFetch = window.fetch;\n                window.fetch = function () {\n                    window.__lastNetworkActivity = Date.now();\n                    return origFetch.apply(this, arguments);\n                };\n                const origXhrOpen = XMLHttpRequest.prototype.open;\n                XMLHttpRequest.prototype.open = function () {\n                    this.addEventListener('loadend', () => {\n                        window.__lastNetworkActivity = Date.now();\n                    });\n                    origXhrOpen.apply(this, arguments);\n                };\n            });\n\n            try {\n                await browser.waitUntil(\n                    async () => {\n                        const last = await browser.execute(() => window.__lastNetworkActivity);\n                        return Date.now() - last > 3000; // 3s network idle\n                    },\n                    { timeout: 45000 }\n                );\n            } catch (netErr) {\n                softFailNote += '⚠ Network idle not reached; continuing as soft-fail<br/>';\n            }\n\n            // 5️⃣ Spinner wait (SOFT-FAIL for all mobile)\n            try {\n                await browser.waitUntil(\n                    async () => {\n                        return await browser.execute(() => {\n                            const spinners = document.querySelectorAll(\n                                '[class*=\"spinner\"], [class*=\"loading\"], [aria-busy=\"true\"]'\n                            );\n                            return Array.from(spinners).every(el => {\n                                const style = window.getComputedStyle(el);\n                                return style.display === 'none' || style.visibility === 'hidden';\n                            });\n                        });\n                    },\n                    { timeout: 90000 } // extend to 90s for slow devices\n                );\n            } catch (spinnerErr) {\n                softFailNote += '⚠ Spinner still visible (soft-fail)<br/>';\n            }\n\n            // 6️⃣ Capture title\n            title = await browser.getTitle();\n\n            // 7️⃣ Screenshot\n            screenshotName = `${Date.now()}-${device.replace(/\\s/g, '_')}-BDO.png`;\n            const screenshotPath = path.join(screenshotDir, screenshotName);\n            await browser.saveScreenshot(screenshotPath);\n\n        } catch (err) {\n            status = 'failed';\n            throw err;\n        } finally {\n            // Prepare HTML report row\n            if (!fs.existsSync(reportDir)) fs.mkdirSync(reportDir, { recursive: true });\n            if (!fs.existsSync(screenshotDir)) fs.mkdirSync(screenshotDir, { recursive: true });\n\n            const finalStatus =\n                status === 'passed' && softFailNote ? 'warning' : status;\n\n            const rowHtml = `<tr>\n<td>${device}</td>\n<td>${os}</td>\n<td>${browserName}</td>\n<td>${title}${softFailNote ? `<br/><small>${softFailNote}</small>` : ''}</td>\n<td class=\"${finalStatus}\">${finalStatus.toUpperCase()}</td>\n<td>${\n                screenshotName !== 'N/A'\n                    ? `<a href=\"../screenshot/${screenshotName}\" target=\"_blank\">View</a>`\n                    : 'N/A'\n            }</td>\n</tr>`;\n\n            fs.appendFileSync(reportFile, rowHtml);\n        }\n    }","test_file_path":"tests/bdo_test.js","test_location":"tests/bdo_test.js","test_scope":"BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness","test_scopes":["BDO Online Banking - Page Load Test"],"test_started_at":"2025-12-27T06:47:33.110Z","automate_session_name":"BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness","test_failure":null,"test_failure_reason":null,"test_failure_type":null,"test_ended_at":"2025-12-27T06:47:44.934Z","test_hook_last_finished":"TestFrameworkState.TEST","automate_session_status":"passed","test_deferred":true,"logs":[]}
+2025-12-27T06:47:44.964Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Added the event {
+  event_type: 'TestRunFinished',
+  test_run: {
+    type: 'test',
+    framework: 'WebdriverIO-mocha',
+    uuid: 'b219717c-2498-4c41-9a1f-740588d1f859',
+    name: 'should open BDO Online Banking and validate full page readiness',
+    body: {
+      lang: 'ecmascript',
+      code: 'async function () {\n' +
+        '        const caps = browser.capabilities;\n' +
+        "        const device = caps.deviceName || caps.browserName || 'unknown-device';\n" +
+        "        const os = caps.os || caps.platformName || 'unknown-os';\n" +
+        "        const browserName = caps.browserName || 'unknown-browser';\n" +
+        '        const isMobile = /ios|android/i.test(os) || /safari/i.test(browserName) || /chrome/i.test(browserName);\n' +
+        '\n' +
+        "        let status = 'passed';\n" +
+        "        let title = 'N/A';\n" +
+        "        let screenshotName = 'N/A';\n" +
+        "        let softFailNote = '';\n" +
+        '\n' +
+        '        try {\n' +
+        "            await browser.url('https://www.onlinebanking.bdo.com.ph/');\n" +
+        '\n' +
+        '            // 1️⃣ DOM + URL ready (soft-fail for mobile)\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        const readyState = await browser.execute(() => document.readyState);\n' +
+        '                        const currentUrl = await browser.getUrl();\n' +
+        "                        return readyState === 'complete' && currentUrl.includes('bdo.com.ph');\n" +
+        '                    },\n' +
+        '                    { timeout: isMobile ? 90000 : 45000 }\n' +
+        '                );\n' +
+        '            } catch (domErr) {\n' +
+        '                if (isMobile) {\n' +
+        "                    softFailNote += '⚠ Mobile DOM may not be fully rendered; continuing as soft-fail<br/>';\n" +
+        '                } else {\n' +
+        '                    throw domErr;\n' +
+        '                }\n' +
+        '            }\n' +
+        '\n' +
+        '            // 2️⃣ Detect BLOCKED / SECURITY pages\n' +
+        '            const pageContent = await browser.execute(() => document.body.innerText.toLowerCase());\n' +
+        '            if (\n' +
+        "                pageContent.includes('access denied') ||\n" +
+        "                pageContent.includes('security check') ||\n" +
+        "                pageContent.includes('unusual activity') ||\n" +
+        "                pageContent.includes('verify you are human')\n" +
+        '            ) {\n' +
+        "                throw new Error('Blocked / security page detected');\n" +
+        '            }\n' +
+        '\n' +
+        '            // 3️⃣ Detect MAINTENANCE page\n' +
+        '            if (\n' +
+        "                pageContent.includes('maintenance') ||\n" +
+        "                pageContent.includes('temporarily unavailable') ||\n" +
+        "                pageContent.includes('we’ll be back soon')\n" +
+        '            ) {\n' +
+        "                throw new Error('Maintenance page detected');\n" +
+        '            }\n' +
+        '\n' +
+        '            // 4️⃣ Network idle approximation\n' +
+        '            await browser.execute(() => {\n' +
+        '                window.__lastNetworkActivity = Date.now();\n' +
+        '                const origFetch = window.fetch;\n' +
+        '                window.fetch = function () {\n' +
+        '                    window.__lastNetworkActivity = Date.now();\n' +
+        '                    return origFetch.apply(this, arguments);\n' +
+        '                };\n' +
+        '                const origXhrOpen = XMLHttpRequest.prototype.open;\n' +
+        '                XMLHttpRequest.prototype.open = function () {\n' +
+        "                    this.addEventListener('loadend', () => {\n" +
+        '                        window.__lastNetworkActivity = Date.now();\n' +
+        '                    });\n' +
+        '                    origXhrOpen.apply(this, arguments);\n' +
+        '                };\n' +
+        '            });\n' +
+        '\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        const last = await browser.execute(() => window.__lastNetworkActivity);\n' +
+        '                        return Date.now() - last > 3000; // 3s network idle\n' +
+        '                    },\n' +
+        '                    { timeout: 45000 }\n' +
+        '                );\n' +
+        '            } catch (netErr) {\n' +
+        "                softFailNote += '⚠ Network idle not reached; continuing as soft-fail<br/>';\n" +
+        '            }\n' +
+        '\n' +
+        '            // 5️⃣ Spinner wait (SOFT-FAIL for all mobile)\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        return await browser.execute(() => {\n' +
+        '                            const spinners = document.querySelectorAll(\n' +
+        `                                '[class*="spinner"], [class*="loading"], [aria-busy="true"]'\n` +
+        '                            );\n' +
+        '                            return Array.from(spinners).every(el => {\n' +
+        '                                const style = window.getComputedStyle(el);\n' +
+        "                                return style.display === 'none' || style.visibility === 'hidden';\n" +
+        '                            });\n' +
+        '                        });\n' +
+        '                    },\n' +
+        '                    { timeout: 90000 } // extend to 90s for slow devices\n' +
+        '                );\n' +
+        '            } catch (spinnerErr) {\n' +
+        "                softFailNote += '⚠ Spinner still visible (soft-fail)<br/>';\n" +
+        '            }\n' +
+        '\n' +
+        '            // 6️⃣ Capture title\n' +
+        '            title = await browser.getTitle();\n' +
+        '\n' +
+        '            // 7️⃣ Screenshot\n' +
+        "            screenshotName = `${Date.now()}-${device.replace(/\\s/g, '_')}-BDO.png`;\n" +
+        '            const screenshotPath = path.join(screenshotDir, screenshotName);\n' +
+        '            await browser.saveScreenshot(screenshotPath);\n' +
+        '\n' +
+        '        } catch (err) {\n' +
+        "            status = 'failed';\n" +
+        '            throw err;\n' +
+        '        } finally {\n' +
+        '            // Prepare HTML report row\n' +
+        '            if (!fs.existsSync(reportDir)) fs.mkdirSync(reportDir, { recursive: true });\n' +
+        '            if (!fs.existsSync(screenshotDir)) fs.mkdirSync(screenshotDir, { recursive: true });\n' +
+        '\n' +
+        '            const finalStatus =\n' +
+        "                status === 'passed' && softFailNote ? 'warning' : status;\n" +
+        '\n' +
+        '            const rowHtml = `<tr>\n' +
+        '<td>${device}</td>\n' +
+        '<td>${os}</td>\n' +
+        '<td>${browserName}</td>\n' +
+        "<td>${title}${softFailNote ? `<br/><small>${softFailNote}</small>` : ''}</td>\n" +
+        '<td class="${finalStatus}">${finalStatus.toUpperCase()}</td>\n' +
+        '<td>${\n' +
+        "                screenshotName !== 'N/A'\n" +
+        '                    ? `<a href="../screenshot/${screenshotName}" target="_blank">View</a>`\n' +
+        "                    : 'N/A'\n" +
+        '            }</td>\n' +
+        '</tr>`;\n' +
+        '\n' +
+        '            fs.appendFileSync(reportFile, rowHtml);\n' +
+        '        }\n' +
+        '    }'
+    },
+    identifier: 'should open BDO Online Banking and validate full page readiness',
+    scope: 'BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness',
+    scopes: [ 'BDO Online Banking - Page Load Test' ],
+    file_name: 'tests/bdo_test.js',
+    vc_filepath: 'tests/bdo_test.js',
+    location: 'tests/bdo_test.js',
+    result: 'passed',
+    duration_in_ms: 11824,
+    started_at: '2025-12-27T06:47:33.110Z',
+    finished_at: '2025-12-27T06:47:44.934Z',
+    failure: null,
+    failure_type: null,
+    failure_reason: null,
+    retry_of: null,
+    custom_metadata: undefined,
+    tags: [],
+    customRerunParam: { rerun_name: undefined },
+    hooks: [],
+    product_map: {
+      observability: true,
+      accessibility: false,
+      percy: false,
+      automate: true,
+      app_automate: false
+    }
+  },
+  logs: []
+} to 28707:0
+2025-12-27T06:47:45.715Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Processing batch event [
+  {
+    event_type: 'TestRunFinished',
+    test_run: {
+      type: 'test',
+      framework: 'WebdriverIO-mocha',
+      uuid: 'b219717c-2498-4c41-9a1f-740588d1f859',
+      name: 'should open BDO Online Banking and validate full page readiness',
+      body: [Object],
+      identifier: 'should open BDO Online Banking and validate full page readiness',
+      scope: 'BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness',
+      scopes: [Array],
+      file_name: 'tests/bdo_test.js',
+      vc_filepath: 'tests/bdo_test.js',
+      location: 'tests/bdo_test.js',
+      result: 'passed',
+      duration_in_ms: 11824,
+      started_at: '2025-12-27T06:47:33.110Z',
+      finished_at: '2025-12-27T06:47:44.934Z',
+      failure: null,
+      failure_type: null,
+      failure_reason: null,
+      retry_of: null,
+      custom_metadata: undefined,
+      tags: [],
+      customRerunParam: [Object],
+      hooks: [],
+      product_map: [Object]
+    },
+    logs: []
+  }
+] to 28707:0
+2025-12-27T06:47:45.718Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making POST request to https://collector-observability.browserstack.com
+2025-12-27T06:49:17.178Z CLI warn [TEST REPORTING AND ANALYTICS:webdriverio:mocha]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  TestRunFinished: event={"test_framework_name":"WebdriverIO-mocha","test_framework_version":"9.21.0","test_logs":[],"test_hooks_finished":{},"test_hooks_started":{},"test_uuid":"9d33f0e2-de82-4881-bb18-779d1c165c56","test_result":"passed","test_hook_last_started":"TestFrameworkState.TEST","test_id":"BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness","test_name":"should open BDO Online Banking and validate full page readiness","test_code":"async function () {\n        const caps = browser.capabilities;\n        const device = caps.deviceName || caps.browserName || 'unknown-device';\n        const os = caps.os || caps.platformName || 'unknown-os';\n        const browserName = caps.browserName || 'unknown-browser';\n        const isMobile = /ios|android/i.test(os) || /safari/i.test(browserName) || /chrome/i.test(browserName);\n\n        let status = 'passed';\n        let title = 'N/A';\n        let screenshotName = 'N/A';\n        let softFailNote = '';\n\n        try {\n            await browser.url('https://www.onlinebanking.bdo.com.ph/');\n\n            // 1️⃣ DOM + URL ready (soft-fail for mobile)\n            try {\n                await browser.waitUntil(\n                    async () => {\n                        const readyState = await browser.execute(() => document.readyState);\n                        const currentUrl = await browser.getUrl();\n                        return readyState === 'complete' && currentUrl.includes('bdo.com.ph');\n                    },\n                    { timeout: isMobile ? 90000 : 45000 }\n                );\n            } catch (domErr) {\n                if (isMobile) {\n                    softFailNote += '⚠ Mobile DOM may not be fully rendered; continuing as soft-fail<br/>';\n                } else {\n                    throw domErr;\n                }\n            }\n\n            // 2️⃣ Detect BLOCKED / SECURITY pages\n            const pageContent = await browser.execute(() => document.body.innerText.toLowerCase());\n            if (\n                pageContent.includes('access denied') ||\n                pageContent.includes('security check') ||\n                pageContent.includes('unusual activity') ||\n                pageContent.includes('verify you are human')\n            ) {\n                throw new Error('Blocked / security page detected');\n            }\n\n            // 3️⃣ Detect MAINTENANCE page\n            if (\n                pageContent.includes('maintenance') ||\n                pageContent.includes('temporarily unavailable') ||\n                pageContent.includes('we’ll be back soon')\n            ) {\n                throw new Error('Maintenance page detected');\n            }\n\n            // 4️⃣ Network idle approximation\n            await browser.execute(() => {\n                window.__lastNetworkActivity = Date.now();\n                const origFetch = window.fetch;\n                window.fetch = function () {\n                    window.__lastNetworkActivity = Date.now();\n                    return origFetch.apply(this, arguments);\n                };\n                const origXhrOpen = XMLHttpRequest.prototype.open;\n                XMLHttpRequest.prototype.open = function () {\n                    this.addEventListener('loadend', () => {\n                        window.__lastNetworkActivity = Date.now();\n                    });\n                    origXhrOpen.apply(this, arguments);\n                };\n            });\n\n            try {\n                await browser.waitUntil(\n                    async () => {\n                        const last = await browser.execute(() => window.__lastNetworkActivity);\n                        return Date.now() - last > 3000; // 3s network idle\n                    },\n                    { timeout: 45000 }\n                );\n            } catch (netErr) {\n                softFailNote += '⚠ Network idle not reached; continuing as soft-fail<br/>';\n            }\n\n            // 5️⃣ Spinner wait (SOFT-FAIL for all mobile)\n            try {\n                await browser.waitUntil(\n                    async () => {\n                        return await browser.execute(() => {\n                            const spinners = document.querySelectorAll(\n                                '[class*=\"spinner\"], [class*=\"loading\"], [aria-busy=\"true\"]'\n                            );\n                            return Array.from(spinners).every(el => {\n                                const style = window.getComputedStyle(el);\n                                return style.display === 'none' || style.visibility === 'hidden';\n                            });\n                        });\n                    },\n                    { timeout: 90000 } // extend to 90s for slow devices\n                );\n            } catch (spinnerErr) {\n                softFailNote += '⚠ Spinner still visible (soft-fail)<br/>';\n            }\n\n            // 6️⃣ Capture title\n            title = await browser.getTitle();\n\n            // 7️⃣ Screenshot\n            screenshotName = `${Date.now()}-${device.replace(/\\s/g, '_')}-BDO.png`;\n            const screenshotPath = path.join(screenshotDir, screenshotName);\n            await browser.saveScreenshot(screenshotPath);\n\n        } catch (err) {\n            status = 'failed';\n            throw err;\n        } finally {\n            // Prepare HTML report row\n            if (!fs.existsSync(reportDir)) fs.mkdirSync(reportDir, { recursive: true });\n            if (!fs.existsSync(screenshotDir)) fs.mkdirSync(screenshotDir, { recursive: true });\n\n            const finalStatus =\n                status === 'passed' && softFailNote ? 'warning' : status;\n\n            const rowHtml = `<tr>\n<td>${device}</td>\n<td>${os}</td>\n<td>${browserName}</td>\n<td>${title}${softFailNote ? `<br/><small>${softFailNote}</small>` : ''}</td>\n<td class=\"${finalStatus}\">${finalStatus.toUpperCase()}</td>\n<td>${\n                screenshotName !== 'N/A'\n                    ? `<a href=\"../screenshot/${screenshotName}\" target=\"_blank\">View</a>`\n                    : 'N/A'\n            }</td>\n</tr>`;\n\n            fs.appendFileSync(reportFile, rowHtml);\n        }\n    }","test_file_path":"tests/bdo_test.js","test_location":"tests/bdo_test.js","test_scope":"BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness","test_scopes":["BDO Online Banking - Page Load Test"],"test_started_at":"2025-12-27T06:47:34.214Z","automate_session_name":"BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness","test_failure":null,"test_failure_reason":null,"test_failure_type":null,"test_ended_at":"2025-12-27T06:49:17.169Z","test_hook_last_finished":"TestFrameworkState.TEST","automate_session_status":"passed","test_deferred":true,"logs":[]}
+2025-12-27T06:49:17.183Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Added the event {
+  event_type: 'TestRunFinished',
+  test_run: {
+    type: 'test',
+    framework: 'WebdriverIO-mocha',
+    uuid: '9d33f0e2-de82-4881-bb18-779d1c165c56',
+    name: 'should open BDO Online Banking and validate full page readiness',
+    body: {
+      lang: 'ecmascript',
+      code: 'async function () {\n' +
+        '        const caps = browser.capabilities;\n' +
+        "        const device = caps.deviceName || caps.browserName || 'unknown-device';\n" +
+        "        const os = caps.os || caps.platformName || 'unknown-os';\n" +
+        "        const browserName = caps.browserName || 'unknown-browser';\n" +
+        '        const isMobile = /ios|android/i.test(os) || /safari/i.test(browserName) || /chrome/i.test(browserName);\n' +
+        '\n' +
+        "        let status = 'passed';\n" +
+        "        let title = 'N/A';\n" +
+        "        let screenshotName = 'N/A';\n" +
+        "        let softFailNote = '';\n" +
+        '\n' +
+        '        try {\n' +
+        "            await browser.url('https://www.onlinebanking.bdo.com.ph/');\n" +
+        '\n' +
+        '            // 1️⃣ DOM + URL ready (soft-fail for mobile)\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        const readyState = await browser.execute(() => document.readyState);\n' +
+        '                        const currentUrl = await browser.getUrl();\n' +
+        "                        return readyState === 'complete' && currentUrl.includes('bdo.com.ph');\n" +
+        '                    },\n' +
+        '                    { timeout: isMobile ? 90000 : 45000 }\n' +
+        '                );\n' +
+        '            } catch (domErr) {\n' +
+        '                if (isMobile) {\n' +
+        "                    softFailNote += '⚠ Mobile DOM may not be fully rendered; continuing as soft-fail<br/>';\n" +
+        '                } else {\n' +
+        '                    throw domErr;\n' +
+        '                }\n' +
+        '            }\n' +
+        '\n' +
+        '            // 2️⃣ Detect BLOCKED / SECURITY pages\n' +
+        '            const pageContent = await browser.execute(() => document.body.innerText.toLowerCase());\n' +
+        '            if (\n' +
+        "                pageContent.includes('access denied') ||\n" +
+        "                pageContent.includes('security check') ||\n" +
+        "                pageContent.includes('unusual activity') ||\n" +
+        "                pageContent.includes('verify you are human')\n" +
+        '            ) {\n' +
+        "                throw new Error('Blocked / security page detected');\n" +
+        '            }\n' +
+        '\n' +
+        '            // 3️⃣ Detect MAINTENANCE page\n' +
+        '            if (\n' +
+        "                pageContent.includes('maintenance') ||\n" +
+        "                pageContent.includes('temporarily unavailable') ||\n" +
+        "                pageContent.includes('we’ll be back soon')\n" +
+        '            ) {\n' +
+        "                throw new Error('Maintenance page detected');\n" +
+        '            }\n' +
+        '\n' +
+        '            // 4️⃣ Network idle approximation\n' +
+        '            await browser.execute(() => {\n' +
+        '                window.__lastNetworkActivity = Date.now();\n' +
+        '                const origFetch = window.fetch;\n' +
+        '                window.fetch = function () {\n' +
+        '                    window.__lastNetworkActivity = Date.now();\n' +
+        '                    return origFetch.apply(this, arguments);\n' +
+        '                };\n' +
+        '                const origXhrOpen = XMLHttpRequest.prototype.open;\n' +
+        '                XMLHttpRequest.prototype.open = function () {\n' +
+        "                    this.addEventListener('loadend', () => {\n" +
+        '                        window.__lastNetworkActivity = Date.now();\n' +
+        '                    });\n' +
+        '                    origXhrOpen.apply(this, arguments);\n' +
+        '                };\n' +
+        '            });\n' +
+        '\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        const last = await browser.execute(() => window.__lastNetworkActivity);\n' +
+        '                        return Date.now() - last > 3000; // 3s network idle\n' +
+        '                    },\n' +
+        '                    { timeout: 45000 }\n' +
+        '                );\n' +
+        '            } catch (netErr) {\n' +
+        "                softFailNote += '⚠ Network idle not reached; continuing as soft-fail<br/>';\n" +
+        '            }\n' +
+        '\n' +
+        '            // 5️⃣ Spinner wait (SOFT-FAIL for all mobile)\n' +
+        '            try {\n' +
+        '                await browser.waitUntil(\n' +
+        '                    async () => {\n' +
+        '                        return await browser.execute(() => {\n' +
+        '                            const spinners = document.querySelectorAll(\n' +
+        `                                '[class*="spinner"], [class*="loading"], [aria-busy="true"]'\n` +
+        '                            );\n' +
+        '                            return Array.from(spinners).every(el => {\n' +
+        '                                const style = window.getComputedStyle(el);\n' +
+        "                                return style.display === 'none' || style.visibility === 'hidden';\n" +
+        '                            });\n' +
+        '                        });\n' +
+        '                    },\n' +
+        '                    { timeout: 90000 } // extend to 90s for slow devices\n' +
+        '                );\n' +
+        '            } catch (spinnerErr) {\n' +
+        "                softFailNote += '⚠ Spinner still visible (soft-fail)<br/>';\n" +
+        '            }\n' +
+        '\n' +
+        '            // 6️⃣ Capture title\n' +
+        '            title = await browser.getTitle();\n' +
+        '\n' +
+        '            // 7️⃣ Screenshot\n' +
+        "            screenshotName = `${Date.now()}-${device.replace(/\\s/g, '_')}-BDO.png`;\n" +
+        '            const screenshotPath = path.join(screenshotDir, screenshotName);\n' +
+        '            await browser.saveScreenshot(screenshotPath);\n' +
+        '\n' +
+        '        } catch (err) {\n' +
+        "            status = 'failed';\n" +
+        '            throw err;\n' +
+        '        } finally {\n' +
+        '            // Prepare HTML report row\n' +
+        '            if (!fs.existsSync(reportDir)) fs.mkdirSync(reportDir, { recursive: true });\n' +
+        '            if (!fs.existsSync(screenshotDir)) fs.mkdirSync(screenshotDir, { recursive: true });\n' +
+        '\n' +
+        '            const finalStatus =\n' +
+        "                status === 'passed' && softFailNote ? 'warning' : status;\n" +
+        '\n' +
+        '            const rowHtml = `<tr>\n' +
+        '<td>${device}</td>\n' +
+        '<td>${os}</td>\n' +
+        '<td>${browserName}</td>\n' +
+        "<td>${title}${softFailNote ? `<br/><small>${softFailNote}</small>` : ''}</td>\n" +
+        '<td class="${finalStatus}">${finalStatus.toUpperCase()}</td>\n' +
+        '<td>${\n' +
+        "                screenshotName !== 'N/A'\n" +
+        '                    ? `<a href="../screenshot/${screenshotName}" target="_blank">View</a>`\n' +
+        "                    : 'N/A'\n" +
+        '            }</td>\n' +
+        '</tr>`;\n' +
+        '\n' +
+        '            fs.appendFileSync(reportFile, rowHtml);\n' +
+        '        }\n' +
+        '    }'
+    },
+    identifier: 'should open BDO Online Banking and validate full page readiness',
+    scope: 'BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness',
+    scopes: [ 'BDO Online Banking - Page Load Test' ],
+    file_name: 'tests/bdo_test.js',
+    vc_filepath: 'tests/bdo_test.js',
+    location: 'tests/bdo_test.js',
+    result: 'passed',
+    duration_in_ms: 102955,
+    started_at: '2025-12-27T06:47:34.214Z',
+    finished_at: '2025-12-27T06:49:17.169Z',
+    failure: null,
+    failure_type: null,
+    failure_reason: null,
+    retry_of: null,
+    custom_metadata: undefined,
+    tags: [],
+    customRerunParam: { rerun_name: undefined },
+    hooks: [],
+    product_map: {
+      observability: true,
+      accessibility: false,
+      percy: false,
+      automate: true,
+      app_automate: false
+    }
+  },
+  logs: []
+} to 28707:0
+2025-12-27T06:49:17.797Z CLI info [testhub:request-queue-handler]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Processing batch event [
+  {
+    event_type: 'TestRunFinished',
+    test_run: {
+      type: 'test',
+      framework: 'WebdriverIO-mocha',
+      uuid: '9d33f0e2-de82-4881-bb18-779d1c165c56',
+      name: 'should open BDO Online Banking and validate full page readiness',
+      body: [Object],
+      identifier: 'should open BDO Online Banking and validate full page readiness',
+      scope: 'BDO Online Banking - Page Load Test - should open BDO Online Banking and validate full page readiness',
+      scopes: [Array],
+      file_name: 'tests/bdo_test.js',
+      vc_filepath: 'tests/bdo_test.js',
+      location: 'tests/bdo_test.js',
+      result: 'passed',
+      duration_in_ms: 102955,
+      started_at: '2025-12-27T06:47:34.214Z',
+      finished_at: '2025-12-27T06:49:17.169Z',
+      failure: null,
+      failure_type: null,
+      failure_reason: null,
+      retry_of: null,
+      custom_metadata: undefined,
+      tags: [],
+      customRerunParam: [Object],
+      hooks: [],
+      product_map: [Object]
+    },
+    logs: []
+  }
+] to 28707:0
+2025-12-27T06:49:17.798Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making POST request to https://collector-observability.browserstack.com
+2025-12-27T06:49:21.760Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making PUT request to https://collector-observability.browserstack.com
+2025-12-27T06:49:22.473Z CLI info [testhub:module]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  stopBuild: cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm request={"finished_at":"2025-12-27T06:49:21.760Z","finished_metadata":[],"custom_metadata":null} response={"data":""}
+2025-12-27T06:49:22.475Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making POST request to https://api.browserstack.com
+2025-12-27T06:49:22.476Z CLI info [TEST REPORTING AND ANALYTICS:module]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Visit https://automation.browserstack.com/builds/cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm to view build report, insights, and many more debugging information all at one place!
+2025-12-27T06:49:22.806Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making GET request to https://api.browserstack.com
+2025-12-27T06:49:23.901Z CLI info  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  [PRODUCTION] Making POST request to https://eds.browserstack.com
+2025-12-27T06:49:24.868Z CLI info [main]  [christianbuenvia_N9hiQw]  [cdwhsqrw8fcxzdl5c10fecaxzgisyakwylk1zinm]  [5040ab38-8245-4eb4-b54a-905316782709]  Received graceful signal termination, performing cleanup

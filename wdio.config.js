@@ -17,7 +17,9 @@ exports.config = {
     // ====================
     // Specify Test Files
     // ====================
-    specs: ['./tests/example.spec.js'],
+    //specs: ['./tests/example.spec.js'],
+
+    specs: ['./tests/bdo_test.js'],
     maxInstances: 2,
 
     //
