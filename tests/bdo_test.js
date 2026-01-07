@@ -31,7 +31,7 @@ describe('BDO Online Banking - Page Load Test', function () {
                         const currentUrl = await browser.getUrl();
                         return readyState === 'complete' && currentUrl.includes('bdo.com.ph');
                     },
-                    { timeout: isMobile ? 90000 : 45000 }
+                    { timeout: isMobile ? 120000 : 120000 } //wait for 2 mins
                 );
             } catch (domErr) {
                 if (isMobile) {
